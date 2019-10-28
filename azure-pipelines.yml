@@ -33,6 +33,13 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+# do this after other tasks such as building
+- task: DotNetCoreCLI@2
+  inputs:
+    command: test
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'    
+
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'cobertura'
