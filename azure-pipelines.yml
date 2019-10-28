@@ -32,3 +32,11 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'JaCoCo'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/intro1/**/coverage.xml'
+    pathToSources: '$(System.DefaultWorkingDirectory)/intro1'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/intro1/code-coverage-HTML-report-directory'
+    failIfCoverageEmpty: true
